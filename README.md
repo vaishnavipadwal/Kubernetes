@@ -1,4 +1,5 @@
-# Kubernetes#
+# Kubernetes
+
 ## What is kubernates
 Kubernetes is an open-source container managment platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF).
 
@@ -12,4 +13,7 @@ When you run applications in containers (like Docker), managing them manually ca
 
 ## Cluster
 A Kubernetes cluster is a group of machines (nodes) that work together to run and manage containerized applications efficiently. It consists of a Control Plane (Master Node) and multiple Worker Nodes that execute the applications.
+
+## Kubernates architecture
+![kubernates-architure](kubernates-arch.jpg)
 
