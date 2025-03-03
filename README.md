@@ -16,4 +16,30 @@ A Kubernetes cluster is a group of machines (nodes) that work together to run an
 
 ## Kubernates architecture
 ![kubernates-architure](kubernates-arch.jpg)
-
+### Explanation:
+A Kubernetes architecture consists of a Control Plane (Master Node) and Worker Nodes that manage and run containerized
+applications
+### 1. Control pannel: 
+The Control Plane is responsible for managing the Kubernetes cluster. It makes decisions about scheduling, scaling, and maintaining the system state.
+#### Key components of control pannel
+1. API Server
+- The main entry point for all Kubernetes commands (kubectl, API calls).
+- It validates and processes requests.
+2. Controller Manager
+  - Ensures the cluster is in the desired state
+3. Scheduler
+- Assigns Pods to Worker Nodes based on resource availability
+4. etcd
+- stores key-value type data
+- A distributed database that stores cluster state and configuration.
+- Every change in the cluster is recorded in etcd.
+### 2. Worker Node
+Worker Nodes run the actual applications in the form of Pods (smallest deployable units in Kubernetes
+#### Key components of Worker Nodes:
+1. Kubelet
+- Runs on every Worker Node
+- Communicates with the Control Plane and ensures that Pods are running.
+3. Kube Proxy
+- Handles networking and ensures that Pods can communicate with each other.
+4. Container Runtime
+- The software responsible for running containers
