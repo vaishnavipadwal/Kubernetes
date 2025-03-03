@@ -33,7 +33,7 @@ The Control Plane is responsible for managing the Kubernetes cluster. It makes d
 - stores key-value type data
 - A distributed database that stores cluster state and configuration.
 - Every change in the cluster is recorded in etcd.
-### 2. Worker Node
+### 2. Worker Nodes
 Worker Nodes run the actual applications in the form of Pods (smallest deployable units in Kubernetes
 #### Key components of Worker Nodes:
 1. Kubelet
