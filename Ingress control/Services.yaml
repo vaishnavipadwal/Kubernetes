@@ -1,18 +1,12 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: surviboutique-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: surviboutique-service
 spec:
-  rules:
-  - host: surviboutique.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: surviboutique-service  # Ensure this matches your Service name
-            port:
-              number: 80
+  selector:
+    app: surviboutique
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP

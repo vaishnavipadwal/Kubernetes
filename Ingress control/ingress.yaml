@@ -7,14 +7,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: surviboutique.com  
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: surviboutique-service  
-                port:
-                  number: 80
-
+  - host: surviboutique.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: surviboutique-service
+            port:
+              number: 80
