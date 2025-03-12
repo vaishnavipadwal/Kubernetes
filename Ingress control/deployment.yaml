@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surviboutique
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: surviboutique
+  template:
+    metadata:
+      labels:
+        app: surviboutique
+    spec:
+      containers:
+      - name: surviboutique
+        image: nginx
+        ports:
+        - containerPort: 80
+
