@@ -232,3 +232,20 @@ kubectl delete pod <pod-name>  # Delete a specific pod
 kubectl delete deployment <deployment-name>  # Delete a deployment  
 kubectl delete all --all  # Delete all resources in the current namespace  
 ```
+## What is kubectl expose in Kubernetes?
+The kubectl expose command creates a Kubernetes Service to expose a Pod, Deployment, or other resource. It allows external or internal traffic to reach your application inside the cluster
+
+### Expose a Deployment
+```
+kubectl expose <resource-type> <resource-name> --port=<target-port> --type=<service-type>
+
+kubectl expose deployment my-app --port=80 --target-port=8080 --type=ClusterIP  #This creates a service named my-app that routes traffic from port 80 (service) to port 8080 (pod).Default service type is ClusterIP (only accessible inside the cluster)
+```
+### Expose a Pod
+```
+kubectl expose pod my-pod --port=8080 --type=NodePort  #This makes the pod accessible via a random high port (e.g., 30000-32767) on each node.
+```
+### Expose a Deployment as a LoadBalancer
+```
+kubectl expose deployment my-app --port=80 --target-port=8080 --type=LoadBalancer  #Used in cloud environments (AWS, GCP, Azure) where an external load balancer is created.
+``` 
