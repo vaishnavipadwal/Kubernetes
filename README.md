@@ -249,3 +249,26 @@ kubectl expose pod my-pod --port=8080 --type=NodePort  #This makes the pod acces
 ```
 kubectl expose deployment my-app --port=80 --target-port=8080 --type=LoadBalancer  #Used in cloud environments (AWS, GCP, Azure) where an external load balancer is created.
 ``` 
+## Kubernetes YAML file 
+A Kubernetes YAML file is a configuration file used to define, create, and manage Kubernetes resources. It follows the YAML (Yet Another Markup Language) format, which is easy to read and write. it Defines resources in a structured and declarative way. Enables automation and version control for infrastructure. Makes deployments repeatable and consistent.
+### Basic Structure of a Kubernetes YAML File
+```
+apiVersion: v1  # Specifies the Kubernetes API version
+kind: Pod       # Defines the type of resource (Pod, Service, Deployment, etc.)
+metadata:
+  name: mynginx  # Name of the resource
+  labels:
+    app: myapp   # Labels for categorization
+spec:
+  containers:
+    - name: mynginx   # Name of the container
+      image: nginx:latest  # Docker image to use
+      ports:
+        - containerPort: 80  # Exposing port 80 for HTTP traffic
+```
+- apiVersion: Specifies the Kubernetes API version to use.
+- kind: Defines the type of resource (Pod, Deployment, Service, etc.).
+- metadata: Stores information like name, labels, and annotations.
+- spec: Describes the desired state of the resource, including containers, replicas, ports, and volumes.
+
+
