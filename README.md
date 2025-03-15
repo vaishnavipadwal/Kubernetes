@@ -172,3 +172,62 @@ minikube start --driver=docker
 minikube status
 
 ```
+
+##  kubectl Kubernetes commands
+### Cluster Information & Status 
+```
+kubectl cluster-info  # Show cluster details  
+kubectl get nodes  # List all nodes in the cluster  
+kubectl describe node <node-name>  # Get detailed info about a node  
+kubectl config view  # View Kubernetes configuration  
+kubectl config use-context <context-name>  # Switch Kubernetes context  
+```
+### Working with Pods 
+```
+kubectl get pods  # List all running pods  
+kubectl describe pod <pod-name>  # Get details of a specific pod  
+kubectl logs <pod-name>  # View logs of a pod  
+kubectl logs <pod-name> -c <container-name>  # View logs of a specific container inside a pod  
+kubectl exec -it <pod-name> -- /bin/sh  # Open shell inside a pod (Alpine-based)  
+kubectl exec -it <pod-name> -- /bin/bash  # Open shell inside a pod (Ubuntu-based)  
+```
+### Managing Deployments 
+```
+kubectl get deployments  # List all deployments  
+kubectl describe deployment <deployment-name>  # Get details of a deployment  
+kubectl scale deployment <deployment-name> --replicas=3  # Scale a deployment  
+kubectl set image deployment/<deployment-name> <container-name>=<new-image>  # Update container image in deployment  
+kubectl rollout undo deployment <deployment-name>  # Rollback to the previous deployment  
+```
+### Managing Services 
+```
+kubectl get services  # List all services  
+kubectl describe service <service-name>  # Get details of a specific service  
+kubectl port-forward pod/<pod-name> 8080:80  # Forward local port to a pod  
+```
+### ConfigMaps & Secrets 
+```
+kubectl get configmaps  # List all ConfigMaps  
+kubectl describe configmap <configmap-name>  # Get details of a ConfigMap  
+kubectl get secrets  # List all Secrets  
+kubectl get secret <secret-name> -o jsonpath="{.data.<key>}" | base64 --decode  # Decode and view secret data  
+```
+### Managing Namespaces
+```
+kubectl get namespaces  # List all namespaces  
+kubectl create namespace <namespace-name>  # Create a new namespace  
+kubectl config set-context --current --namespace=<namespace-name>  # Switch to a specific namespace  
+kubectl delete namespace <namespace-name>  # Delete a namespace  
+```
+### Troubleshooting 
+```
+kubectl get events --sort-by=.metadata.creationTimestamp  # View events sorted by time  
+kubectl delete pods --all  # Restart all pods in the current namespace  
+kubectl debug pod/<pod-name> -it --image=busybox  # Debug a pod interactively  
+```
+### Cleanup
+```
+kubectl delete pod <pod-name>  # Delete a specific pod  
+kubectl delete deployment <deployment-name>  # Delete a deployment  
+kubectl delete all --all  # Delete all resources in the current namespace  
+```
