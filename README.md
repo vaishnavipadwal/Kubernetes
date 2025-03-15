@@ -135,4 +135,33 @@ Operating System: Ubuntu 20.04+ (Recommended)
 - A container runtime to run Kubernetes: Docker OR Containerd OR CRI-O
 
 ### Docker Installtion on Ubuntu machine
+``` 
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl -y
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+#Install the Docker packages, install the latest version, run:
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+## Kubectl Installation on Ubuntu Machine
+```
+#update the package list to ensure you get the latest version
+sudo apt update && sudo apt upgrade -y
+# Install kubectl
+sudo apt install -y kubectl
+# Install kubectl Using Snap
+sudo snap install kubectl --classic
+# Verify the installation:
+kubectl version --client
+```
 
