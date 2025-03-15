@@ -63,3 +63,65 @@ sudo apt-get update
 #Install the Docker packages, install the latest version, run:
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
+## What is Pod
+A Pod is the smallest and most basic deployable unit in Kubernetes. It represents a single instance of a running process in your cluster.A Pod can run a single container (most common) or multiple tightly coupled containers that share resources.
+
+## Container Runtime Engine
+A Container Runtime Engine (CRE) is essential for running Pods in Kubernetes. It is responsible for managing containerized applications inside a Pod, ensuring they start, stop, and function correctly.
+### How a Container Runtime Works in a Pod:
+- Pulls the container image from a registry when a Pod is scheduled.
+- Creates and runs containers inside the Pod.
+- Handles resource isolation to ensure Pods get their allocated CPU, memory, and storage.
+- Manages networking for communication between Pods.
+- Interacts with Kubernetes through the Container Runtime Interface (CRI) to maintain the Pod lifecycle.
+
+## kubernates Object
+Kubernetes objects define and manage the state of your cluster, controlling how applications run, how they communicate, and how they store data. 
+### 1. Workload Objects
+### 1.1 Pod
+- A Pod is the smallest deployable unit in Kubernetes, representing one or more containers that share network and storage. It ensures that all containers in the Pod run together and can easily communicate with each other.
+- Use case: Running a single instance of an application or grouping related containers together (e.g., an app container and a sidecar for logging).
+### 1.2 Deployment
+- A Deployment manages multiple identical Pods to ensure application availability and scalability. It supports rolling updates and rollbacks, making it ideal for stateless applications.
+- Running web applications, API servers, or microservices that need high availability and auto-scaling.
+### 1.3 StatefulSet
+- A StatefulSet is used for applications that require stable network identities and persistent storage, such as databases. Each Pod in a StatefulSet has a unique name and maintains order during deployment and scaling.
+- Use case: Running stateful applications like MySQL, MongoDB, or Kafka that require stable disk storage and ordered scaling.
+### 1.4 DaemonSet
+- A DaemonSet ensures that a specific Pod runs on every node in the cluster. It is commonly used for background processes that need to run everywhere.
+- Use case: Running system-wide services such as monitoring agents (e.g., Prometheus, Fluentd) or network proxies on every Kubernetes node.
+### 1.5 Job & CronJob
+- A Job runs a task to completion, making it useful for batch processing.
+- A CronJob schedules jobs to run at specified intervals, similar to a Linux cron job.
+- Use case: Running one-time tasks (e.g., database backup, image processing) or scheduled tasks (e.g., generating reports every night).
+### 2. Networking Objects
+### 2.1 Service
+- A Service provides a stable IP and DNS name for a set of Pods, allowing them to communicate reliably even when Pods are replaced. Services can expose applications inside or outside the cluster
+- use case: Exposing a backend API to a frontend application or making an internal database service available to microservices.
+### 2.2 Ingress
+- An Ingress manages external access to Services, handling HTTP and HTTPS traffic using domain-based routing. It allows multiple applications to share a single external IP while directing traffic to different Services.
+-  Use case: Exposing multiple web applications under different paths (e.g., /app1 and /app2) using a single domain.
+### 2.3 NetworkPolicy
+- A NetworkPolicy controls how Pods communicate with each other by defining rules for allowed or denied network traffic.
+- Use case: Restricting traffic between backend and frontend Pods or ensuring that only authorized microservices can talk to the database.
+### 3. Storage Objects
+### 3.1 PersistentVolume (PV) and PersistentVolumeClaim (PVC)
+- A PersistentVolume (PV) is a storage resource provisioned in the cluster (e.g., cloud storage, NFS, or a local disk).
+- A PersistentVolumeClaim (PVC) is a request for storage made by a Pod.
+- Use case: Ensuring data persistence for databases, message queues, or applications that store user-generated content.
+### 3.2 ConfigMap
+- A ConfigMap stores non-sensitive configuration data such as environment variables, command-line arguments, or configuration files. It helps keep application settings separate from the container image.
+- Use case: Storing database connection strings, logging levels, or feature flags that need to be dynamically updated
+### 3.3 Secret
+- A Secret stores sensitive data such as passwords, API keys, and certificates securely. Unlike ConfigMaps, Secrets are stored in an encrypted format.
+- Use case: Managing database credentials, cloud API tokens, or TLS certificates securely.
+### 4. Cluster Management Objects 
+### 4.1 Namespace
+- A Namespace creates isolated environments within a Kubernetes cluster, allowing different teams or projects to share the cluster without conflicts.
+- Use case: Organizing resources for development, staging, and production environments or separating different teams’ applications.
+### 4.2 ResourceQuota
+- A ResourceQuota limits the CPU, memory, and storage usage of a Namespace to prevent resource overuse.
+- Use case: Ensuring that no single application consumes excessive cluster resources, improving stability.
+### 4.3 LimitRange
+- A LimitRange sets minimum and maximum resource limits for Pods and containers within a Namespace, ensuring efficient resource allocation.
+- Use case: Preventing Pods from consuming too little or too much CPU/memory, ensuring fair resource distribution.
