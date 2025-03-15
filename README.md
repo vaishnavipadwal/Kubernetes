@@ -125,3 +125,14 @@ Kubernetes objects define and manage the state of your cluster, controlling how 
 ### 4.3 LimitRange
 - A LimitRange sets minimum and maximum resource limits for Pods and containers within a Namespace, ensuring efficient resource allocation.
 - Use case: Preventing Pods from consuming too little or too much CPU/memory, ensuring fair resource distribution.
+
+## Requirements for Installing and Using Minikube on an Ubuntu Instance
+Operating System: Ubuntu 20.04+ (Recommended)
+- Processor: 64-bit CPU
+- RAM: At least 2 GB RAM (4 GB+ recommended for better performance)
+- Disk Space: At least 20 GB free space
+- Virtualization Support: Required for running Minikube with a hypervisor like VirtualBox or KVM
+- A container runtime to run Kubernetes: Docker OR Containerd OR CRI-O
+
+### Docker Installtion on Ubuntu machine
+
