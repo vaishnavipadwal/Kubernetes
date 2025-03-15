@@ -164,5 +164,4 @@ kubectl version --client
 ### Start Minikueb service
 ```
 sudo minikube start --force
-
 ```
