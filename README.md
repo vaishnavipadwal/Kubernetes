@@ -176,6 +176,7 @@ minikube status
 ##  kubectl Kubernetes commands
 ### Cluster Information & Status 
 ```
+alias k=kubectl  # Create an alias for kubectl
 kubectl cluster-info  # Show cluster details  
 kubectl get nodes  # List all nodes in the cluster  
 kubectl describe node <node-name>  # Get detailed info about a node  
