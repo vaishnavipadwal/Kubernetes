@@ -161,7 +161,7 @@ sudo snap install kubectl --classic
 # Verify the installation:
 kubectl version --client
 ```
-### TO Access minikube Docker & Start Minikueb service
+### To access minikube Docker & Start Minikueb service
 ```
 sudo usermod -aG docker $USER
 
